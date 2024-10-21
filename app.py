@@ -25,22 +25,25 @@ def input_pdf_text(uploaded_file):
 #Prompt Template
 
 input_prompt="""
-Hey Act Like a skilled or very experience ATS(Application Tracking System)
-with a deep understanding of tech field,software engineering,data science ,data analyst
-and big data engineer. Your task is to evaluate the resume based on the given job description.
-You must consider the job market is very competitive and you should provide 
-best assistance for improving thr resumes. Assign the percentage Matching based 
-on Jd and
-the missing keywords with high accuracy
+You are an advanced Application Tracking System (ATS) designed to evaluate resumes in the technology 
+field (software engineering, data science, data analysis, big data engineering) against specific job descriptions. 
+The current job market is highly competitive, so your goal is to provide precise feedback on how well the 
+resume matches the job description and suggest improvements.
+Your task:
+- Assess the resume based on the job description (JD).
+- Identify the percentage match between the resume and the JD.
+- Highlight missing or insufficient keywords/skills from the JD.
+
+Evaluate the following:
 resume:{text}
 description:{jd}
 
-I want the response in one single string having the structure
-{{"JD Match":"%","MissingKeywords:[]","Profile Summary":""}}
+The structure of your response should be:
+{{"JD Match":"X%","MissingKeywords":["keyword1", "keyword2", ...],"Profile Summary":"A brief overview of the resume's alignment with the job description, highlighting strengths and areas to improve."}}
 """
 
 ## streamlit app
-st.title("Smart ATS")
+st.title("ATS Scanner")
 st.text("Improve Your Resume ATS")
 jd=st.text_area("Paste the Job Description")
 uploaded_file=st.file_uploader("Upload Your Resume",type="pdf",help="Please uplaod the pdf")
